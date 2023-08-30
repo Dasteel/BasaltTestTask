@@ -1,0 +1,7 @@
+# ninja log v5
+0	59	1693343103046136826	untitled4_autogen/mocs_compilation.cpp	83a80ca224151600
+60	83	1693343103074137216	CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o	ac546249cba1fb77
+2	59	1693419445303641348	build.ninja	e34a01a60ed3576a
+1520	1741	1693343104730160281	untitled4	3685f6cc6bb7e664
+0	59	1693343103046136826	untitled4_autogen/timestamp	83a80ca224151600
+59	1518	1693343104506157162	CMakeFiles/untitled4.dir/main.cpp.o	74a3bebc7a047728
