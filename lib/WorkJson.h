@@ -7,16 +7,17 @@
 
 #include "QHash"
 #include "QList"
+#include "QJsonArray"
 
 
 class WorkJson {
 
 public:
 
+
     QHash<QString,QString> getPkgNameAndVersion(QString branch,QString arch,QString path);
     QList<QString> getAllArchsBranch(QString branch,QString path);
-    void WriteToJsonFile(); //допилить, нужно придумать, что будет параметрами функции
-
+    void writeToJsonFile(const QString& arch, const QString& folderName, QJsonArray data_to_write, qint32 count_of_unique_pkg_name);
 
 };
 

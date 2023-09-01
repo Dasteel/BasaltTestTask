@@ -1,9 +1,17 @@
 untitled4_autogen/timestamp: \
-	/home/denis/CLionProjects/untitled4/CMakeLists.txt \
-	/home/denis/CLionProjects/untitled4/cmake-build-debug/CMakeFiles/3.26.4/CMakeCCompiler.cmake \
-	/home/denis/CLionProjects/untitled4/cmake-build-debug/CMakeFiles/3.26.4/CMakeCXXCompiler.cmake \
-	/home/denis/CLionProjects/untitled4/cmake-build-debug/CMakeFiles/3.26.4/CMakeSystem.cmake \
-	/home/denis/CLionProjects/untitled4/main.cpp \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/CMakeLists.txt \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/3.26.4/CMakeCCompiler.cmake \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/3.26.4/CMakeCXXCompiler.cmake \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/3.26.4/CMakeSystem.cmake \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/Api_loader.cpp \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/Api_loader.h \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/Branch.cpp \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/Branch.h \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/MyLib.cpp \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/MyLib.h \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/WorkJson.cpp \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/lib/WorkJson.h \
+	/home/denis/CLionProjects/Basalt_test_binary_branchs/main.cpp \
 	/snap/clion/249/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake \
 	/snap/clion/249/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCXXInformation.cmake \
 	/snap/clion/249/bin/cmake/linux/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake \

@@ -19,7 +19,10 @@ add_executable(untitled4 main.cpp
         lib/Api_loader.cpp
         lib/Api_loader.h
         lib/WorkJson.cpp
-        lib/WorkJson.h)
+        lib/WorkJson.h
+        lib/MyLib.cpp
+        lib/MyLib.h
+)
 target_link_libraries(untitled4
         Qt5::Core
 

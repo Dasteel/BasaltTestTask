@@ -6,6 +6,7 @@
 #include "QFile"
 
 
+
 /**
  * @brief Api_loader::get_all_arch
  * Method of getting a response containing a list of architectures of the transferred branch
@@ -13,18 +14,25 @@
  * @param path
  * @return a QJsonDocument containing binary package archs list.
  */
-QJsonDocument Api_loader::get_all_arch_load(std::string branch,  std::string path) {
+QJsonDocument Api_loader::get_all_arch_load(std::string branch,  QString path) {
     QJsonDocument document;
     const std::string query = "curl -X 'GET' "
-                              "  https://rdb.altlinux.org/api/site/all_pkgset_archs?branch=p10/";
-    std::string query_to_perform = query + "?branch=" + branch + " >" + path;
+                              "  https://rdb.altlinux.org/api/site/all_pkgset_archs";
+    std::string query_to_perform = query + "?branch=" + branch + " >" + path.toStdString();
     system(query_to_perform.data());
-    QFile file("path") ;
+
+    QFile file(path);
+
     QByteArray buffer;
-    if(file.isOpen())
+
+    if(file.open(QIODevice::ReadOnly))
     {
         qDebug()<<"File archs is open";
         buffer = file.readAll();
+    }
+    else
+    {
+        qDebug()<<"Error --> File archs is not open";
     }
 
     QJsonParseError parseError;
@@ -35,6 +43,7 @@ QJsonDocument Api_loader::get_all_arch_load(std::string branch,  std::string pat
         qDebug()<<"Json document parse error";
         //document = NULL;
     }
+    file.close();
 
     return document;
 }
@@ -48,19 +57,23 @@ QJsonDocument Api_loader::get_all_arch_load(std::string branch,  std::string pat
  * @return a QJsonDocument containing branch data for a specific architecture.
  */
 
-QJsonDocument Api_loader::get_binary_branch_load(std::string branch, std::string arch, std::string path) {
+QJsonDocument Api_loader::get_binary_branch_load(std::string branch, std::string arch, QString path) {
     QJsonDocument document;
     const std::string query = "curl -X 'GET' "
                               "  https://rdb.altlinux.org/api/export/branch_binary_packages/";
 
-    std::string query_to_perform = query + branch + "?arch=" + arch + " >" + path;
+    std::string query_to_perform = query + branch + "?arch=" + arch + " >" + path.toStdString();
     system(query_to_perform.data());
-    QFile file("path") ;
+    QFile file(path) ;
     QByteArray buffer;
-    if(file.isOpen())
+    if(file.open(QIODevice::ReadOnly))
     {
         qDebug()<<"File binary_branch is open";
         buffer = file.readAll();
+    }
+    else
+    {
+        qDebug()<<"Error --> File binary_branch is not open";
     }
     QJsonParseError parseError;
 
@@ -68,8 +81,10 @@ QJsonDocument Api_loader::get_binary_branch_load(std::string branch, std::string
     if(parseError.errorString().toInt() != QJsonParseError::NoError)
     {
         qDebug()<<"Json document parse error";
-        //document = QJsonDocument(nullptr);
+
     }
+
+    file.close();
 
     return document;
 }

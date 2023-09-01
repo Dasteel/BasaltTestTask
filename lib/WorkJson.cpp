@@ -5,6 +5,8 @@
 #include "WorkJson.h"
 #include "Api_loader.h"
 #include "QJsonArray"
+#include "QDir"
+#include "QJsonObject"
 
 #include "QJsonDocument"
 
@@ -24,7 +26,7 @@ QHash<QString,QString> WorkJson::getPkgNameAndVersion(QString branch,QString arc
     QJsonDocument document;
     Api_loader apiLoader;
 
-    document = apiLoader.get_binary_branch_load(branch.toStdString(),arch.toStdString(),path.toStdString());
+    document = apiLoader.get_binary_branch_load(branch.toStdString(),arch.toStdString(),path);
 
     auto packages_json_array =document[QString("packages")].toArray();
     for(auto it = packages_json_array.cbegin(); it!=packages_json_array.cend(); ++it)
@@ -50,7 +52,7 @@ QList<QString> WorkJson::getAllArchsBranch(QString branch,QString path) {
     QJsonDocument document;
     Api_loader apiLoader;
 
-    document = apiLoader.get_all_arch_load(branch.toStdString(),path.toStdString());
+    document = apiLoader.get_all_arch_load(branch.toStdString(),path);
     auto archs_branch_json_array = document[QString("archs")].toArray();
     for(auto it = archs_branch_json_array.cbegin();it!=archs_branch_json_array.cend(); ++it)
     {
@@ -60,4 +62,44 @@ QList<QString> WorkJson::getAllArchsBranch(QString branch,QString path) {
 
     return archs_list;
 }
+
+
+/**
+ * @brief WorkJson::writeToJsonFile
+ * Writes data to a json file
+ * @param arch
+ * @param folderName
+ * @param data_to_write
+ * @param count_of_unique_pkg_name
+ */
+void WorkJson::writeToJsonFile(const QString& arch, const QString& folderName, QJsonArray data_to_write, qint32 count_of_unique_pkg_name) {
+    QDir dir(folderName);
+
+    dir.setPath(dir.absolutePath());
+    dir.mkpath(dir.path());
+
+    QFile fout(QString("%1/%2.json").arg(dir.path(),arch));
+    if(fout.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        QJsonDocument document;
+        QJsonParseError parse_error;
+
+        document = QJsonDocument::fromJson(fout.readAll(),&parse_error);
+        if(parse_error.errorString().toInt() == QJsonParseError::NoError)
+        {
+            QJsonObject cur_data(document.object());
+
+            QJsonObject pkgs_json{{"packages",data_to_write}};
+            pkgs_json["length"] = count_of_unique_pkg_name;
+
+            cur_data[arch] = pkgs_json;
+            fout.reset();
+            fout.write(QJsonDocument(cur_data).toJson());
+        }
+        fout.close();
+    }
+
+}
+
+
 

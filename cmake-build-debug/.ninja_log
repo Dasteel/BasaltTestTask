@@ -1,7 +1,13 @@
 # ninja log v5
-0	59	1693343103046136826	untitled4_autogen/mocs_compilation.cpp	83a80ca224151600
-60	83	1693343103074137216	CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o	ac546249cba1fb77
-2	59	1693419445303641348	build.ninja	e34a01a60ed3576a
-1520	1741	1693343104730160281	untitled4	3685f6cc6bb7e664
-0	59	1693343103046136826	untitled4_autogen/timestamp	83a80ca224151600
-59	1518	1693343104506157162	CMakeFiles/untitled4.dir/main.cpp.o	74a3bebc7a047728
+3	24	1693529215865764388	untitled4_autogen/mocs_compilation.cpp	e4e7869f4665c1c2
+78	106	1693512169467951137	CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o	8174f0c9f6e70daa
+2	59	1693530451576155594	build.ninja	e34a01a60ed3576a
+25	2395	1693529218235115018	CMakeFiles/untitled4.dir/lib/MyLib.cpp.o	53b07098da848a01
+2396	2696	1693529218535285242	untitled4	6e52cdd5d582b401
+79	106	1693512169467951137	CMakeFiles/untitled4.dir/lib/Branch.cpp.o	16ad26f16e2ff054
+3	24	1693529215865764388	/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/timestamp	e4e7869f4665c1c2
+3	24	1693529215865764388	untitled4_autogen/timestamp	e4e7869f4665c1c2
+3	24	1693529215865764388	/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/mocs_compilation.cpp	e4e7869f4665c1c2
+25	2323	1693526198132767211	CMakeFiles/untitled4.dir/lib/WorkJson.cpp.o	e87c9a6b5cf938d8
+16	1831	1693524011118666521	CMakeFiles/untitled4.dir/lib/Api_loader.cpp.o	e8bcfda79a5bedec
+25	1915	1693529217754842147	CMakeFiles/untitled4.dir/main.cpp.o	997f53a3ac9f4aa
