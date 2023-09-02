@@ -1,14 +1,16 @@
 #include <QCoreApplication>
-#include <QDebug>
-#include "lib/MyLib.h"
+
+#include "MyLib.h"
 
 
 
 
 int main(int argc, char *argv[]) {
     QCoreApplication a(argc, argv);
-    MyLib myLib(QString("p10"),QString("sisyphus"),QString("json"));
+    MyLib myLib(QString("sisyphus"),QString("p10"),QString("json"));
     myLib.compare_branches();
+    myLib.compare_version();
+    exit(1);
 
 
 

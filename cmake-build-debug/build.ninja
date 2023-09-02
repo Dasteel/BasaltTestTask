@@ -41,19 +41,79 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/
 # =============================================================================
+# Object build statements for SHARED_LIBRARY target MyLibrary
+
+
+#############################################
+# Order-only phony target for MyLibrary
+
+build cmake_object_order_depends_target_MyLibrary: phony || MyLibrary_autogen MyLibrary_autogen/mocs_compilation.cpp MyLibrary_autogen/timestamp MyLibrary_autogen_timestamp_deps
+
+build CMakeFiles/MyLibrary.dir/MyLibrary_autogen/mocs_compilation.cpp.o: CXX_COMPILER__MyLibrary_unscanned_Debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_MyLibrary
+  DEFINES = -DMyLibrary_EXPORTS -DQT_CORE_LIB
+  DEP_FILE = CMakeFiles/MyLibrary.dir/MyLibrary_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -g -fPIC -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  OBJECT_DIR = CMakeFiles/MyLibrary.dir
+  OBJECT_FILE_DIR = CMakeFiles/MyLibrary.dir/MyLibrary_autogen
+
+build CMakeFiles/MyLibrary.dir/lib/Api_loader.cpp.o: CXX_COMPILER__MyLibrary_unscanned_Debug /home/denis/CLionProjects/Basalt_test_binary_branchs/lib/Api_loader.cpp || cmake_object_order_depends_target_MyLibrary
+  DEFINES = -DMyLibrary_EXPORTS -DQT_CORE_LIB
+  DEP_FILE = CMakeFiles/MyLibrary.dir/lib/Api_loader.cpp.o.d
+  FLAGS = -g -fPIC -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  OBJECT_DIR = CMakeFiles/MyLibrary.dir
+  OBJECT_FILE_DIR = CMakeFiles/MyLibrary.dir/lib
+
+build CMakeFiles/MyLibrary.dir/lib/WorkJson.cpp.o: CXX_COMPILER__MyLibrary_unscanned_Debug /home/denis/CLionProjects/Basalt_test_binary_branchs/lib/WorkJson.cpp || cmake_object_order_depends_target_MyLibrary
+  DEFINES = -DMyLibrary_EXPORTS -DQT_CORE_LIB
+  DEP_FILE = CMakeFiles/MyLibrary.dir/lib/WorkJson.cpp.o.d
+  FLAGS = -g -fPIC -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  OBJECT_DIR = CMakeFiles/MyLibrary.dir
+  OBJECT_FILE_DIR = CMakeFiles/MyLibrary.dir/lib
+
+build CMakeFiles/MyLibrary.dir/lib/MyLib.cpp.o: CXX_COMPILER__MyLibrary_unscanned_Debug /home/denis/CLionProjects/Basalt_test_binary_branchs/lib/MyLib.cpp || cmake_object_order_depends_target_MyLibrary
+  DEFINES = -DMyLibrary_EXPORTS -DQT_CORE_LIB
+  DEP_FILE = CMakeFiles/MyLibrary.dir/lib/MyLib.cpp.o.d
+  FLAGS = -g -fPIC -fdiagnostics-color=always -fPIC
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  OBJECT_DIR = CMakeFiles/MyLibrary.dir
+  OBJECT_FILE_DIR = CMakeFiles/MyLibrary.dir/lib
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target MyLibrary
+
+
+#############################################
+# Link the shared library libMyLibrary.so
+
+build libMyLibrary.so: CXX_SHARED_LIBRARY_LINKER__MyLibrary_Debug CMakeFiles/MyLibrary.dir/MyLibrary_autogen/mocs_compilation.cpp.o CMakeFiles/MyLibrary.dir/lib/Api_loader.cpp.o CMakeFiles/MyLibrary.dir/lib/WorkJson.cpp.o CMakeFiles/MyLibrary.dir/lib/MyLib.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 || MyLibrary_autogen MyLibrary_autogen_timestamp_deps
+  LANGUAGE_COMPILE_FLAGS = -g
+  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8
+  OBJECT_DIR = CMakeFiles/MyLibrary.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libMyLibrary.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libMyLibrary.so
+  TARGET_PDB = MyLibrary.so.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target untitled4
 
 
 #############################################
 # Order-only phony target for untitled4
 
-build cmake_object_order_depends_target_untitled4: phony || untitled4_autogen untitled4_autogen/mocs_compilation.cpp untitled4_autogen/timestamp untitled4_autogen_timestamp_deps
+build cmake_object_order_depends_target_untitled4: phony || cmake_object_order_depends_target_MyLibrary untitled4_autogen untitled4_autogen/mocs_compilation.cpp untitled4_autogen/timestamp untitled4_autogen_timestamp_deps
 
 build CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o: CXX_COMPILER__untitled4_unscanned_Debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_untitled4
   DEFINES = -DQT_CORE_LIB
   DEP_FILE = CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -fPIC
-  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/untitled4.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled4.dir/untitled4_autogen
 
@@ -61,7 +121,7 @@ build CMakeFiles/untitled4.dir/main.cpp.o: CXX_COMPILER__untitled4_unscanned_Deb
   DEFINES = -DQT_CORE_LIB
   DEP_FILE = CMakeFiles/untitled4.dir/main.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -fPIC
-  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/untitled4.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled4.dir
 
@@ -69,7 +129,7 @@ build CMakeFiles/untitled4.dir/lib/Api_loader.cpp.o: CXX_COMPILER__untitled4_uns
   DEFINES = -DQT_CORE_LIB
   DEP_FILE = CMakeFiles/untitled4.dir/lib/Api_loader.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -fPIC
-  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/untitled4.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled4.dir/lib
 
@@ -77,7 +137,7 @@ build CMakeFiles/untitled4.dir/lib/WorkJson.cpp.o: CXX_COMPILER__untitled4_unsca
   DEFINES = -DQT_CORE_LIB
   DEP_FILE = CMakeFiles/untitled4.dir/lib/WorkJson.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -fPIC
-  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/untitled4.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled4.dir/lib
 
@@ -85,7 +145,7 @@ build CMakeFiles/untitled4.dir/lib/MyLib.cpp.o: CXX_COMPILER__untitled4_unscanne
   DEFINES = -DQT_CORE_LIB
   DEP_FILE = CMakeFiles/untitled4.dir/lib/MyLib.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always -fPIC
-  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+  INCLUDES = -I/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/include -I/home/denis/CLionProjects/Basalt_test_binary_branchs/lib -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
   OBJECT_DIR = CMakeFiles/untitled4.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled4.dir/lib
 
@@ -97,9 +157,9 @@ build CMakeFiles/untitled4.dir/lib/MyLib.cpp.o: CXX_COMPILER__untitled4_unscanne
 #############################################
 # Link the executable untitled4
 
-build untitled4: CXX_EXECUTABLE_LINKER__untitled4_Debug CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o CMakeFiles/untitled4.dir/main.cpp.o CMakeFiles/untitled4.dir/lib/Api_loader.cpp.o CMakeFiles/untitled4.dir/lib/WorkJson.cpp.o CMakeFiles/untitled4.dir/lib/MyLib.cpp.o | /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 || untitled4_autogen untitled4_autogen_timestamp_deps
+build untitled4: CXX_EXECUTABLE_LINKER__untitled4_Debug CMakeFiles/untitled4.dir/untitled4_autogen/mocs_compilation.cpp.o CMakeFiles/untitled4.dir/main.cpp.o CMakeFiles/untitled4.dir/lib/Api_loader.cpp.o CMakeFiles/untitled4.dir/lib/WorkJson.cpp.o CMakeFiles/untitled4.dir/lib/MyLib.cpp.o | libMyLibrary.so /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 || libMyLibrary.so untitled4_autogen untitled4_autogen_timestamp_deps
   FLAGS = -g
-  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8
+  LINK_LIBRARIES = -Wl,-rpath,/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug  libMyLibrary.so  /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8
   OBJECT_DIR = CMakeFiles/untitled4.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -131,9 +191,21 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 
 #############################################
+# Utility command for MyLibrary_autogen_timestamp_deps
+
+build MyLibrary_autogen_timestamp_deps: phony CMakeFiles/MyLibrary_autogen_timestamp_deps
+
+
+#############################################
+# Utility command for MyLibrary_autogen
+
+build MyLibrary_autogen: phony CMakeFiles/MyLibrary_autogen MyLibrary_autogen/timestamp MyLibrary_autogen/mocs_compilation.cpp MyLibrary_autogen_timestamp_deps
+
+
+#############################################
 # Utility command for untitled4_autogen_timestamp_deps
 
-build untitled4_autogen_timestamp_deps: phony CMakeFiles/untitled4_autogen_timestamp_deps
+build untitled4_autogen_timestamp_deps: phony CMakeFiles/untitled4_autogen_timestamp_deps libMyLibrary.so
 
 
 #############################################
@@ -143,9 +215,19 @@ build untitled4_autogen: phony CMakeFiles/untitled4_autogen untitled4_autogen/ti
 
 
 #############################################
+# Custom command for MyLibrary_autogen/timestamp
+
+build MyLibrary_autogen/timestamp MyLibrary_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}MyLibrary_autogen/timestamp ${cmake_ninja_workdir}MyLibrary_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt5/bin/moc || MyLibrary_autogen_timestamp_deps
+  COMMAND = cd /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/MyLibrary_autogen.dir/AutogenInfo.json Debug && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E touch /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/timestamp && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/denis/CLionProjects/Basalt_test_binary_branchs /home/denis/CLionProjects/Basalt_test_binary_branchs /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/deps /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/d/df16628749f5207fdec575e1aa9aadb234e713206e532dc24518c81a59172384.d
+  DESC = Automatic MOC and UIC for target MyLibrary
+  depfile = /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/d/df16628749f5207fdec575e1aa9aadb234e713206e532dc24518c81a59172384.d
+  restat = 1
+
+
+#############################################
 # Custom command for untitled4_autogen/timestamp
 
-build untitled4_autogen/timestamp untitled4_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}untitled4_autogen/timestamp ${cmake_ninja_workdir}untitled4_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt5/bin/moc || untitled4_autogen_timestamp_deps
+build untitled4_autogen/timestamp untitled4_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}untitled4_autogen/timestamp ${cmake_ninja_workdir}untitled4_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt5/bin/moc || MyLibrary_autogen MyLibrary_autogen_timestamp_deps libMyLibrary.so untitled4_autogen_timestamp_deps
   COMMAND = cd /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/untitled4_autogen.dir/AutogenInfo.json Debug && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E touch /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/timestamp && /snap/clion/249/bin/cmake/linux/x64/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /home/denis/CLionProjects/Basalt_test_binary_branchs /home/denis/CLionProjects/Basalt_test_binary_branchs /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/deps /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/d/a46e0d71f3f4f591d8acb48528acc7d9b30526cf5283a1dcb35f2c4927496158.d
   DESC = Automatic MOC and UIC for target untitled4
   depfile = /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/d/a46e0d71f3f4f591d8acb48528acc7d9b30526cf5283a1dcb35f2c4927496158.d
@@ -153,18 +235,32 @@ build untitled4_autogen/timestamp untitled4_autogen/mocs_compilation.cpp | ${cma
 
 
 #############################################
+# Phony custom command for CMakeFiles/MyLibrary_autogen_timestamp_deps
+
+build CMakeFiles/MyLibrary_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/MyLibrary_autogen_timestamp_deps: phony /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 /usr/lib/qt5/bin/moc
+
+
+#############################################
+# Phony custom command for CMakeFiles/MyLibrary_autogen
+
+build CMakeFiles/MyLibrary_autogen | ${cmake_ninja_workdir}CMakeFiles/MyLibrary_autogen: phony MyLibrary_autogen/timestamp || MyLibrary_autogen_timestamp_deps
+
+
+#############################################
 # Phony custom command for CMakeFiles/untitled4_autogen_timestamp_deps
 
-build CMakeFiles/untitled4_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/untitled4_autogen_timestamp_deps: phony /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 /usr/lib/qt5/bin/moc
+build CMakeFiles/untitled4_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/untitled4_autogen_timestamp_deps: phony libMyLibrary.so /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.8 /usr/lib/qt5/bin/moc || MyLibrary_autogen MyLibrary_autogen_timestamp_deps libMyLibrary.so
 
 
 #############################################
 # Phony custom command for CMakeFiles/untitled4_autogen
 
-build CMakeFiles/untitled4_autogen | ${cmake_ninja_workdir}CMakeFiles/untitled4_autogen: phony untitled4_autogen/timestamp || untitled4_autogen_timestamp_deps
+build CMakeFiles/untitled4_autogen | ${cmake_ninja_workdir}CMakeFiles/untitled4_autogen: phony untitled4_autogen/timestamp || MyLibrary_autogen MyLibrary_autogen_timestamp_deps libMyLibrary.so untitled4_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.
+
+build MyLibrary: phony libMyLibrary.so
 
 # =============================================================================
 # Folder targets.
@@ -174,7 +270,7 @@ build CMakeFiles/untitled4_autogen | ${cmake_ninja_workdir}CMakeFiles/untitled4_
 #############################################
 # Folder: /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug
 
-build all: phony untitled4
+build all: phony libMyLibrary.so untitled4
 
 # =============================================================================
 # Built-in targets

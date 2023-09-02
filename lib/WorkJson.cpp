@@ -3,7 +3,7 @@
 //
 
 #include "WorkJson.h"
-#include "Api_loader.h"
+
 #include "QJsonArray"
 #include "QDir"
 #include "QJsonObject"
@@ -99,6 +99,31 @@ void WorkJson::writeToJsonFile(const QString& arch, const QString& folderName, Q
         fout.close();
     }
 
+}
+/**
+ * @brief WorkJson::getPkgNameAndVersion
+ * Extracts package names and release data from a json file
+ * @param branch
+ * @param arch
+ * @param path
+ * @return a QHash containing the package name (key) and release (value).
+ */
+QHash<QString,QString> WorkJson::get_pkg_name_and_release(QString branch, QString arch, QString path) {
+    QHash<QString,QString> pkg_name_and_release;
+    QJsonDocument document;
+    Api_loader apiLoader;
+
+    document = apiLoader.get_binary_branch_load(branch.toStdString(),arch.toStdString(),path);
+
+    auto packages_json_array =document[QString("packages")].toArray();
+    for(auto it = packages_json_array.cbegin(); it!=packages_json_array.cend(); ++it)
+    {
+        auto pkg_name = QJsonValue(*it)["name"].toString();
+        auto pkg_release= QJsonValue(*it)["release"].toString();
+        pkg_name_and_release[pkg_name] = pkg_release;
+    }
+
+    return pkg_name_and_release;
 }
 
 

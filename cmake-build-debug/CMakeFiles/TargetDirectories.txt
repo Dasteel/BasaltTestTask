@@ -1,5 +1,8 @@
+/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/MyLibrary.dir
 /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/untitled4.dir
 /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/MyLibrary_autogen_timestamp_deps.dir
+/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/MyLibrary_autogen.dir
 /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/untitled4_autogen_timestamp_deps.dir
 /home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/untitled4_autogen.dir

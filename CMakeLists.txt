@@ -6,7 +6,19 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "/home/denis/CLionProjects/TestTask/cmake-build-debug/lib/curl-8.2.1/include")
+
+
+
+set(SOURCE_FILES
+        lib/Api_loader.cpp
+        lib/WorkJson.cpp
+        lib/MyLib.cpp
+)
+# Создать разделяемую библиотеку
+add_library(MyLibrary SHARED ${SOURCE_FILES})
+
+# Указать пути к заголовочным файлам
+target_include_directories(MyLibrary PUBLIC lib)
 
 
 find_package(Qt5 COMPONENTS
@@ -23,11 +35,14 @@ add_executable(untitled4 main.cpp
         lib/MyLib.cpp
         lib/MyLib.h
 )
+# Связать библиотеку с Qt5::Core
+target_link_libraries(MyLibrary Qt5::Core)
 target_link_libraries(untitled4
         Qt5::Core
-
-
+        MyLibrary
 )
+
+
 
 
 

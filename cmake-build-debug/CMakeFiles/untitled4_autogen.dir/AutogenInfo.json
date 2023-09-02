@@ -78,6 +78,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"/home/denis/CLionProjects/Basalt_test_binary_branchs/lib",
 		"/usr/include/x86_64-linux-gnu/qt5",
 		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
 		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
@@ -102,7 +103,10 @@
 	],
 	"MOC_PREDEFS_FILE" : "/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/untitled4_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : 
+	[
+		"/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/mocs_compilation.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 4,
 	"PARSE_CACHE_FILE" : "/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/CMakeFiles/untitled4_autogen.dir/ParseCache.txt",
@@ -136,7 +140,10 @@
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],
-	"UIC_SKIP" : [],
+	"UIC_SKIP" : 
+	[
+		"/home/denis/CLionProjects/Basalt_test_binary_branchs/cmake-build-debug/MyLibrary_autogen/mocs_compilation.cpp"
+	],
 	"UIC_UI_FILES" : [],
 	"VERBOSITY" : 0
 }
