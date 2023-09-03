@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.25)
 project(untitled4)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -34,6 +34,7 @@ add_executable(untitled4 main.cpp
         lib/WorkJson.h
         lib/MyLib.cpp
         lib/MyLib.h
+        version.h
 )
 # Связать библиотеку с Qt5::Core
 target_link_libraries(MyLibrary Qt5::Core)

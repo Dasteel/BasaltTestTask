@@ -63,6 +63,12 @@
 			"MU",
 			"ZJOKMXDKB7/moc_WorkJson.cpp",
 			null
+		],
+		[
+			"/home/denis/CLionProjects/Basalt_test_binary_branchs/version.h",
+			"MU",
+			"EWIEGA46WW/moc_version.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],

@@ -128,7 +128,7 @@ void MyLib::compare_version() {
             }
 
             int count = result_pkg_name_and_version.size();
-            workJson.writeToJsonFile(arch, outputFolderName + QString("comp_version"), result_pkg_name_and_version,
+            workJson.writeToJsonFile(arch, outputFolderName + QString("/comp_version"), result_pkg_name_and_version,
                                      result_pkg_name_and_version.size());
 
 
@@ -184,7 +184,7 @@ void MyLib::compare_version() {
                 }
 
 
-                workJson.writeToJsonFile(arch, outputFolderName + QString("_branch_1"), unique_pkg_name_json_1,
+                workJson.writeToJsonFile(arch, outputFolderName + QString("/branch_1"), unique_pkg_name_json_1,
                                          unique_pkg_name_json_1.size());
 
             }
@@ -233,7 +233,7 @@ void  MyLib::compare_branch_2() {
         }
 
 
-        workJson.writeToJsonFile(arch, outputFolderName + QString("_branch_2"), unique_pkg_name_json_2,
+        workJson.writeToJsonFile(arch, outputFolderName+QString("/branch_2"), unique_pkg_name_json_2,
                                  unique_pkg_name_json_2.size());
 
     }
