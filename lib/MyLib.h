@@ -10,6 +10,10 @@
 #include "QHash"
 #include "QJsonArray"
 #include "WorkJson.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
 
 
 class MyLib {
@@ -22,6 +26,9 @@ public:
     void compare_version();
     void compare_branch_1();
     void  compare_branch_2();
+
+
+
 
 private:
 

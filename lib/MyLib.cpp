@@ -2,6 +2,7 @@
 // Created by denis on 31.08.23.
 //
 
+#include <sstream>
 #include "MyLib.h"
 #include "QHash"
 #include "QJsonObject"
@@ -34,8 +35,6 @@ void MyLib::compare_branches() {
 
     archs_branch_1 = workJson.getAllArchsBranch(branch_1,path_archs_branch_1);
     archs_branch_2 = workJson.getAllArchsBranch(branch_2,path_archs_branch_2);
-    /*QList<QString> unique_pkg_name_1;
-    QList<QString> unique_pkg_name_2;*/
 
     std::thread thread1(&MyLib::compare_branch_1,this);
     std::thread thread2(&MyLib::compare_branch_2, this);
@@ -76,16 +75,20 @@ void MyLib::compare_version() {
     QJsonArray result_pkg_name_and_version;
     QList<QString> unique_pkg_name_2;
 
+    int count=0;
+
 
 
     for (auto arch: archs_branch_1) {
         if (archs_branch_2.contains(arch)) {
+
             pkg_name_and_version_branch_1 = workJson.getPkgNameAndVersion(branch_1, arch, path_binary_branch_1);
             pkg_name_and_version_branch_2 = workJson.getPkgNameAndVersion(branch_2, arch, path_binary_branch_2);
             pkg_name_and_release_branch_1 = workJson.get_pkg_name_and_release(branch_1, arch, path_binary_branch_1);
             pkg_name_and_release_branch_2 = workJson.get_pkg_name_and_release(branch_2, arch, path_binary_branch_2);
             QList<QString> pkg_name_branch_1 = pkg_name_and_version_branch_1.keys();
             QList<QString> pkg_name_branch_2 = pkg_name_and_version_branch_2.keys();
+
             for (auto pkg_name: pkg_name_branch_1) {
                 if (pkg_name_branch_2.contains(pkg_name)) {
 
@@ -98,40 +101,54 @@ void MyLib::compare_version() {
                     auto pkg_release_2 = pkg_name_and_release_branch_2[pkg_name];
 
 
-                    std::string v1=pkg_version_1.toStdString();
-                    std::string v2=pkg_version_2.toStdString();
+                    bool flag = false;
+
+                    std::string command = "rpmvercmp "+pkg_version_1.toStdString()+"-"+pkg_release_1.toStdString()+
+                                          " "+ pkg_version_2.toStdString()+"-"+pkg_release_2.toStdString() ;
 
 
-                    if((!pkg_version_1.isEmpty() && !pkg_version_2.isEmpty()) && pkg_version_1>pkg_version_2)
+
+                    // Открываем процесс для выполнения команды и получения его вывода
+                    FILE* pipe = popen(command.data(), "r");
+                    if (!pipe) {
+                        perror("popen");
+
+                    }
+
+                    char buffer[8];
+                    std::string result;
+
+                    // Считываем вывод команды в строку
+                    if (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+                        result = buffer[0];
+                    }
+
+                    // Закрываем процесс
+                    pclose(pipe);
+
+
+                    QString qString = QString::fromStdString(result);
+                    int res = qString.toInt();
+                    if(res == 1)
+                        flag =true;
+                    else
+                        flag =false;
+
+                    if((!pkg_version_1.isEmpty() && !pkg_version_2.isEmpty()) && flag)
                     {
-
-
                         jsonObject["name"] = pkg_name;
                         jsonObject["version"] = pkg_version_1;
                         jsonObject["release"] = pkg_release_1;
                         result_pkg_name_and_version.append(jsonObject);
-
+                        count++;
                     }
-                    else if(((!pkg_version_1.isEmpty() && !pkg_version_2.isEmpty()) && pkg_version_1==pkg_version_2))
-                    {
-                        if(pkg_release_1.remove("alt").toInt()>pkg_release_2.remove("alt").toInt())
-                        {
-                            jsonObject["name"] = pkg_name;
-                            jsonObject["version"] = pkg_version_1;
-                            jsonObject["release"] = pkg_release_1;
-                            result_pkg_name_and_version.append(jsonObject);
-                        }
-                    }
-
 
                 }
             }
 
-            int count = result_pkg_name_and_version.size();
+
             workJson.writeToJsonFile(arch, outputFolderName + QString("/comp_version"), result_pkg_name_and_version,
-                                     result_pkg_name_and_version.size());
-
-
+                                     count);
         }
 
 
@@ -239,7 +256,6 @@ void  MyLib::compare_branch_2() {
     }
 
 }
-
 
 
 
