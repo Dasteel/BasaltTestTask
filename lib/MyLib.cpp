@@ -60,7 +60,7 @@ void MyLib::compare_branches() {
  * @brief MyLib::compare_version
  * Compares package version values in two binary branches
  */
-void compare_version()() {
+void MyLib::compare_version() {
     path_archs_branch_1 = "archs_branch_1.json";
     path_archs_branch_2 = "archs_branch_2.json";
     path_binary_branch_1 = "binary_branch_1.json";
