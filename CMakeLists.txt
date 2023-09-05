@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.23)
 project(untitled4)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -14,16 +14,23 @@ set(SOURCE_FILES
         lib/WorkJson.cpp
         lib/MyLib.cpp
 )
-# Создать разделяемую библиотеку
-add_library(MyLibrary SHARED ${SOURCE_FILES})
 
-# Указать пути к заголовочным файлам
+add_library(MyLibrary SHARED ${SOURCE_FILES})
+add_library(rpmlib SHARED IMPORTED)
+
+
 target_include_directories(MyLibrary PUBLIC lib)
+
+
 
 
 find_package(Qt5 COMPONENTS
         Core
         REQUIRED)
+
+
+set_target_properties(rpmlib PROPERTIES IMPORTED_LOCATION "/usr/lib64/librpm.so")
+
 
 
 
@@ -36,13 +43,14 @@ add_executable(untitled4 main.cpp
         lib/MyLib.h
         version.h
 )
-# Связать библиотеку с Qt5::Core
+
 target_link_libraries(MyLibrary Qt5::Core)
+
 target_link_libraries(untitled4
         Qt5::Core
         MyLibrary
+        rpmlib
 )
-
 
 
 
