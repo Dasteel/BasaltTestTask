@@ -75,7 +75,7 @@ void MyLib::compare_version() {
     QJsonArray result_pkg_name_and_version;
     QList<QString> unique_pkg_name_2;
 
-    int count=0;
+
 
 
 
@@ -89,10 +89,13 @@ void MyLib::compare_version() {
             QList<QString> pkg_name_branch_1 = pkg_name_and_version_branch_1.keys();
             QList<QString> pkg_name_branch_2 = pkg_name_and_version_branch_2.keys();
 
+            int count =0;
+
             for (auto pkg_name: pkg_name_branch_1) {
                 if (pkg_name_branch_2.contains(pkg_name)) {
 
                     QJsonObject jsonObject;
+
 
 
                     auto pkg_version_1 = pkg_name_and_version_branch_1[pkg_name];
@@ -149,6 +152,7 @@ void MyLib::compare_version() {
 
             workJson.writeToJsonFile(arch, outputFolderName + QString("/comp_version"), result_pkg_name_and_version,
                                      count);
+            result_pkg_name_and_version = QJsonArray();
         }
 
 
@@ -203,6 +207,7 @@ void MyLib::compare_version() {
 
                 workJson.writeToJsonFile(arch, outputFolderName + QString("/branch_1"), unique_pkg_name_json_1,
                                          unique_pkg_name_json_1.size());
+                unique_pkg_name_json_1 = QJsonArray();
 
             }
 
@@ -252,6 +257,7 @@ void  MyLib::compare_branch_2() {
 
         workJson.writeToJsonFile(arch, outputFolderName+QString("/branch_2"), unique_pkg_name_json_2,
                                  unique_pkg_name_json_2.size());
+        unique_pkg_name_json_2 = QJsonArray();
 
     }
 
