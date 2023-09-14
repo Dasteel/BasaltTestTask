@@ -20,6 +20,12 @@ Shared library for working with [REST API](https://db.altlinux.org/api /). Searc
 	cmake --build .
 ___
 
+## Installation
+	git clone https://github.com/Dasteel/BasaltTestTask.git
+	cd BasaltTestTask
+	cmake ..
+	make install
+
 ## CLI Usage
 	./untitled4 -b1 "branch_1" -b2 "branch_2" -o "RESULT PATH"
 
