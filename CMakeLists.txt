@@ -1,47 +1,52 @@
+# Определение минимальной версии CMake
 cmake_minimum_required(VERSION 3.23)
+
+# Название вашего проекта
 project(untitled4)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -fPIC -Wno-dev")
 
-set(SOURCE_FILES
-        lib/Api_loader.cpp
-        lib/WorkJson.cpp
-        lib/MyLib.cpp
+
+
+add_library(rpmLib SHARED IMPORTED)
+set_target_properties(rpmLib PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/external/librpm/lib64/librpm.so")
+
+add_library(Qt5Core SHARED IMPORTED)
+set_target_properties(Qt5Core PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/external/Qt5/lib/libQt5Core.so.5.15.2")
+
+# Выполняем второй CMake-файл перед сборкой основного проекта
+add_custom_target(run_install_library
+        COMMAND ${CMAKE_MAKE_PROGRAM} -C ${CMAKE_BINARY_DIR}/install_library install
+        COMMENT "Running install_library"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
-add_library(MyLibrary SHARED ${SOURCE_FILES})
-add_library(rpmlib SHARED IMPORTED)
+# Указываем директорию, где находится второй CMake-файл
+add_subdirectory(install_library)
 
-target_include_directories(MyLibrary PUBLIC lib)
+# Создаем исполняемый файл
+add_executable(untitled4 main.cpp version.h)
 
-find_package(Qt5 COMPONENTS
-        Core
-        REQUIRED)
+# Устанавливаем зависимость от библиотеки и от выполнения второго CMake-файла
+add_dependencies(untitled4 MyLibrary run_install_library)
 
-set_target_properties(rpmlib PROPERTIES IMPORTED_LOCATION "/usr/lib64/librpm.so")
-
-add_executable(untitled4 main.cpp
-        lib/Api_loader.cpp
-        lib/Api_loader.h
-        lib/WorkJson.cpp
-        lib/WorkJson.h
-        lib/MyLib.cpp
-        lib/MyLib.h
-        version.h
+include_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/Qt5/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/librpm/include
 )
 
-target_link_libraries(MyLibrary Qt5::Core)
+link_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/Qt5/lib
+        ${CMAKE_CURRENT_SOURCE_DIR}/external/librpm/lib64
+)
 
 target_link_libraries(untitled4
-        Qt5::Core
         MyLibrary
-        rpmlib
+        Qt5Core
+        rpmLib
 )
-
-install(TARGETS untitled4 DESTINATION bin)
-install(TARGETS MyLibrary DESTINATION lib)

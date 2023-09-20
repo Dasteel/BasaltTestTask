@@ -5,8 +5,8 @@
 #ifndef UNTITLED4_API_LOADER_H
 #define UNTITLED4_API_LOADER_H
 
-#include "QJsonDocument"
 
+#include "QtCore/QJsonDocument"
 
 
 class Api_loader {

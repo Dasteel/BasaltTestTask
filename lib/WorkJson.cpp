@@ -4,11 +4,12 @@
 
 #include "WorkJson.h"
 
-#include "QJsonArray"
-#include "QDir"
-#include "QJsonObject"
 
-#include "QJsonDocument"
+#include "QtCore/QJsonArray"
+#include "QtCore/QDir"
+#include "QtCore/QJsonObject"
+#include "QtCore/QJsonDocument"
+
 
 
 /**

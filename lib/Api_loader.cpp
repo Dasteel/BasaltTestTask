@@ -3,7 +3,7 @@
 //
 
 #include "Api_loader.h"
-#include "QFile"
+#include "QtCore/QFile"
 
 
 

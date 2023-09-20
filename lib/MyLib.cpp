@@ -4,11 +4,15 @@
 
 #include <sstream>
 #include "MyLib.h"
-#include "QHash"
-#include "QJsonObject"
-#include "QRegExp"
+#include "QtCore/QHash"
+#include "QtCore/QRegExp"
+#include "QtCore/QJsonObject"
 #include "thread"
-#include "rpm/rpmvercmp.h"
+#include <rpm/rpmvercmp.h>
+#include "QtCore/QtCoreVersion"
+
+
+
 
 
 
@@ -53,7 +57,7 @@ void MyLib::compare_branches() {
     system(("rm -rf "+ (path_archs_branch_1).toStdString()).data());
     system(("rm -rf "+ (path_archs_branch_2).toStdString()).data());
 
-    return;
+
 }
 
 /**
@@ -82,7 +86,7 @@ void MyLib::compare_version() {
 
 
 
-    for (auto arch: archs_branch_1) {
+    for (const auto& arch: archs_branch_1) {
         if (archs_branch_2.contains(arch)) {
 
             pkg_name_and_version_branch_1 = workJson.getPkgNameAndVersion(branch_1, arch, path_binary_branch_1);
@@ -94,7 +98,7 @@ void MyLib::compare_version() {
 
             int count =0;
 
-            for (auto pkg_name: pkg_name_branch_1) {
+            for (const auto& pkg_name: pkg_name_branch_1) {
                 if (pkg_name_branch_2.contains(pkg_name)) {
 
                     QJsonObject jsonObject;
@@ -115,8 +119,10 @@ void MyLib::compare_version() {
                     const char* version_release_1_Char = version_release_1.toStdString().c_str();
                     const char* version_release_2_Char = version_release_2.toStdString().c_str();
 
-
+                    //int result = rpmvercmp(version_release_1_Char,version_release_2_Char);
                     int result = rpmvercmp(version_release_1_Char,version_release_2_Char);
+
+                    //int result = 1;
                     if(result ==1)
                         flag = true;
                     else
@@ -157,7 +163,7 @@ void MyLib::compare_version() {
 void MyLib::compare_branch_1() {
     WorkJson workJson;
     QList<QString> unique_pkg_name_1;
-    for(auto arch : archs_branch_1)
+    for(const auto& arch : archs_branch_1)
     {
         if(archs_branch_2.contains(arch))
         {
@@ -165,7 +171,7 @@ void MyLib::compare_branch_1() {
             pkg_name_and_version_branch_2_1 = workJson.getPkgNameAndVersion(branch_2,arch,path_binary_branch_2+QString("_1"));
             QList<QString> pkg_name_branch_1 = pkg_name_and_version_branch_1_1.keys();
             QList<QString> pkg_name_branch_2 = pkg_name_and_version_branch_2_1.keys();
-            for(auto pkg_name : pkg_name_branch_1)
+            for(const auto& pkg_name : pkg_name_branch_1)
             {
                 if(!pkg_name_branch_2.contains(pkg_name))
                 {
@@ -181,7 +187,7 @@ void MyLib::compare_branch_1() {
         }
         else{
             unique_pkg_name_1 =workJson.getPkgNameAndVersion(branch_1,arch,path_binary_branch_1).keys();
-            for(auto pkg_name : unique_pkg_name_1) {
+            for(const auto& pkg_name : unique_pkg_name_1) {
                 QJsonObject jsonObject;
                 jsonObject["name"] = pkg_name;
                 unique_pkg_name_json_1.append(jsonObject);
@@ -206,7 +212,7 @@ void  MyLib::compare_branch_2() {
     WorkJson workJson;
     QList<QString> unique_pkg_name_2;
 
-    for(auto arch : archs_branch_2)
+    for(const auto& arch : archs_branch_2)
     {
         if(archs_branch_1.contains(arch))
         {
@@ -214,7 +220,7 @@ void  MyLib::compare_branch_2() {
             pkg_name_and_version_branch_2_2 = workJson.getPkgNameAndVersion(branch_2,arch,path_binary_branch_2+QString("_2"));
             QList<QString> pkg_name_branch_1 = pkg_name_and_version_branch_1_2.keys();
             QList<QString> pkg_name_branch_2 = pkg_name_and_version_branch_2_2.keys();
-            for(auto pkg_name : pkg_name_branch_2)
+            for(const auto& pkg_name : pkg_name_branch_2)
             {
                 if(!pkg_name_branch_1.contains(pkg_name))
                 {
@@ -231,7 +237,7 @@ void  MyLib::compare_branch_2() {
         }
         else{
             unique_pkg_name_2 =workJson.getPkgNameAndVersion(branch_2,arch,path_binary_branch_2).keys();
-            for(auto pkg_name : unique_pkg_name_2) {
+            for(const auto& pkg_name : unique_pkg_name_2) {
                 QJsonObject jsonObject;
                 jsonObject["name"] = pkg_name;
                 unique_pkg_name_json_2.append(jsonObject);

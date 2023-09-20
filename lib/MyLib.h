@@ -5,10 +5,10 @@
 #ifndef UNTITLED4_MYLIB_H
 #define UNTITLED4_MYLIB_H
 
-#include "QString"
-#include "QList"
-#include "QHash"
-#include "QJsonArray"
+#include "QtCore/QHash"
+#include "QtCore/QList"
+#include "QtCore/QString"
+#include "QtCore/QJsonArray"
 #include "WorkJson.h"
 #include <iostream>
 #include <string>
@@ -16,9 +16,10 @@
 #include <algorithm>
 
 
+
 class MyLib {
 
-    void compare();
+
 
 public:
     explicit MyLib(const QString branch1,const QString branch2,const QString outputfolderName);

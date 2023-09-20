@@ -5,9 +5,9 @@
 #ifndef UNTITLED4_WORKJSON_H
 #define UNTITLED4_WORKJSON_H
 
-#include "QHash"
-#include "QList"
-#include "QJsonArray"
+#include "QtCore/QHash"
+#include "QtCore/QList"
+#include "QtCore/QJsonArray"
 #include "Api_loader.h"
 
 
