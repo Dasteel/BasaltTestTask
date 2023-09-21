@@ -1,5 +1,5 @@
 # BasaltTestTask
-![qt5](https://img.shields.io/badge/QT-5.15.2-green) ![curl-7.79.1](https://img.shields.io/badge/curl-7.88.1-green) ![platform](https://img.shields.io/badge/platform-linux-orange) ![librpm](https://img.shields.io/badge/librpm-required-brightgreen)
+![qt5](https://img.shields.io/badge/QT-5.15.2-green) ![curl-7.79.1](https://img.shields.io/badge/curl-7.88.1-green) ![platform](https://img.shields.io/badge/platform-linux-orange) ![librpm](https://img.shields.io/badge/librpm-required-green)
 
 Shared library for working with [REST API](https://db.altlinux.org/api /). Searches for unique packages for each of the two branches, and also searches for packages whose version in the first branch is greater than in the second. The result of the work is recorded in json files with the names of the architecture to which the selected packages belong.
 
@@ -23,7 +23,7 @@ ___
 ## Installation
 	git clone https://github.com/Dasteel/BasaltTestTask.git
 	cd BasaltTestTask
-	cmake ..
+	cmake .
 	make install
 
 ## CLI Usage
